@@ -22,12 +22,13 @@ public class Exportar_PHP {
     public void exportar(){
         String[] lines = codigo.split("\n");
         for(String line : lines){
+            
             /*INICIO Y FIN*/
             if(line.equals("ini")){
                     System.out.println("<?php");
                     continue;
             }else if(line.equals("fin")){
-                    System.out.println("?>");
+                    System.out.println("\n?>");
                     continue;
             }
             
@@ -39,6 +40,10 @@ public class Exportar_PHP {
                 continue;
             }
             
+            /*MOSTRAR*/
+            if(line.trim().startsWith("mostrar")){
+                System.out.printf("echo \"%s\";", line.trim().replace("mostrar ", "").replace("!", "$"));
+            }
         }
     }
 }
