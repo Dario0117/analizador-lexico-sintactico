@@ -33,20 +33,33 @@ public class Principal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        JSP_Container = new javax.swing.JScrollPane();
-        JTA_Field = new javax.swing.JTextArea();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         JTA_Terminal = new javax.swing.JTextArea();
+        jPanel2 = new javax.swing.JPanel();
+        JSP_Container = new javax.swing.JScrollPane();
+        JTA_Field = new javax.swing.JTextArea();
+        jButton1 = new javax.swing.JButton();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        Archivo = new javax.swing.JMenu();
+        Nuevo = new javax.swing.JMenuItem();
+        Guardar = new javax.swing.JMenuItem();
+        jSeparator1 = new javax.swing.JPopupMenu.Separator();
+        Importar = new javax.swing.JMenuItem();
+        Exportar = new javax.swing.JMenuItem();
+        jSeparator2 = new javax.swing.JPopupMenu.Separator();
+        Cerrar = new javax.swing.JMenuItem();
+        Ayuda = new javax.swing.JMenu();
+        Docs = new javax.swing.JMenuItem();
+        About = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        JTA_Field.setColumns(20);
-        JTA_Field.setRows(5);
-        JSP_Container.setViewportView(JTA_Field);
+        setTitle("Analizador Sintáctico: ");
+        setMinimumSize(new java.awt.Dimension(727, 517));
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Terminal"));
 
+        JTA_Terminal.setEditable(false);
         JTA_Terminal.setColumns(20);
         JTA_Terminal.setRows(5);
         jScrollPane1.setViewportView(JTA_Terminal);
@@ -57,16 +70,85 @@ public class Principal extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 488, Short.MAX_VALUE)
+                .addComponent(jScrollPane1)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
+                .addContainerGap())
         );
+
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Código"));
+
+        JTA_Field.setColumns(20);
+        JTA_Field.setRows(5);
+        JSP_Container.setViewportView(JTA_Field);
+
+        jButton1.setText("Analizar");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(JSP_Container, javax.swing.GroupLayout.DEFAULT_SIZE, 675, Short.MAX_VALUE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(JSP_Container, javax.swing.GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton1)
+                .addContainerGap())
+        );
+
+        Archivo.setText("Archivo");
+
+        Nuevo.setText("Nuevo");
+        Archivo.add(Nuevo);
+
+        Guardar.setText("Guardar");
+        Archivo.add(Guardar);
+        Archivo.add(jSeparator1);
+
+        Importar.setText("Importar");
+        Importar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ImportarActionPerformed(evt);
+            }
+        });
+        Archivo.add(Importar);
+
+        Exportar.setText("Exportar");
+        Archivo.add(Exportar);
+        Archivo.add(jSeparator2);
+
+        Cerrar.setText("Cerrar");
+        Archivo.add(Cerrar);
+
+        jMenuBar1.add(Archivo);
+
+        Ayuda.setText("Ayuda");
+
+        Docs.setText("Documentación");
+        Ayuda.add(Docs);
+
+        About.setText("Acerca de");
+        Ayuda.add(About);
+
+        jMenuBar1.add(Ayuda);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -75,22 +157,26 @@ public class Principal extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(JSP_Container))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(60, 60, 60)
-                .addComponent(JSP_Container, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void ImportarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImportarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ImportarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -128,10 +214,24 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem About;
+    private javax.swing.JMenu Archivo;
+    private javax.swing.JMenu Ayuda;
+    private javax.swing.JMenuItem Cerrar;
+    private javax.swing.JMenuItem Docs;
+    private javax.swing.JMenuItem Exportar;
+    private javax.swing.JMenuItem Guardar;
+    private javax.swing.JMenuItem Importar;
     private javax.swing.JScrollPane JSP_Container;
     private javax.swing.JTextArea JTA_Field;
     private javax.swing.JTextArea JTA_Terminal;
+    private javax.swing.JMenuItem Nuevo;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JPopupMenu.Separator jSeparator2;
     // End of variables declaration//GEN-END:variables
 }
