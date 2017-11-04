@@ -5,6 +5,8 @@
  */
 package VISTA;
 
+import LOGICA.Exportar_PHP;
+
 /**
  *
  * @author Esteban Dario Barboza Primera
@@ -15,6 +17,10 @@ public class Principal extends javax.swing.JFrame {
     /**
      * Creates new form Principal
      */
+    
+    private Exportar_PHP php;
+    
+    
     public Principal() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -130,6 +136,11 @@ public class Principal extends javax.swing.JFrame {
         Archivo.add(Importar);
 
         Exportar.setText("Exportar");
+        Exportar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ExportarActionPerformed(evt);
+            }
+        });
         Archivo.add(Exportar);
         Archivo.add(jSeparator2);
 
@@ -177,6 +188,12 @@ public class Principal extends javax.swing.JFrame {
     private void ImportarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImportarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ImportarActionPerformed
+
+    private void ExportarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExportarActionPerformed
+        // TODO add your handling code here:
+        php = new Exportar_PHP(this.JTA_Field.getText());
+        php.exportar();
+    }//GEN-LAST:event_ExportarActionPerformed
 
     /**
      * @param args the command line arguments
