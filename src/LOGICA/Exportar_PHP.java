@@ -42,7 +42,7 @@ public class Exportar_PHP {
             
             /*MOSTRAR*/
             if(line.trim().startsWith("mostrar")){
-                System.out.printf("echo \"%s\";", line.trim().replace("mostrar ", "").replace("!", "$"));
+                System.out.printf("echo \"%s\";%n", line.trim().replace("mostrar ", "").replace("!", "$"));
             }
             
             /*CONDICIONAL SI*/
@@ -50,6 +50,11 @@ public class Exportar_PHP {
                 System.out.printf("%s(%s){%n",
                                 "if",
                                 line.substring(line.indexOf("#si ")+4));
+            }
+            
+            /*Finales de bloque*/
+            if(line.trim().startsWith("#fin")){
+                System.out.println("}");
             }
         }
     }
