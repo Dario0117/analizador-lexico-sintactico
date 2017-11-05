@@ -55,10 +55,15 @@ public class Exportar_PHP {
             }
             
             /*CONDICIONAL ENTONCES*/
-            if(line.trim().startsWith("#entonces")){
+            if(line.trim().equals("#entonces")){
                 System.out.println("}else{");
             }
             
+            /*CONDICIONAL ENTONCES SI*/
+            if(line.trim().startsWith("#entonces_si")){
+                System.out.printf("}else if(%s){%n",
+                        line.substring(line.indexOf("#entonces_si ")+13).replace("!", "$"));
+            }
             
             /*Finales de bloque*/
             if(line.trim().startsWith("#fin")){
