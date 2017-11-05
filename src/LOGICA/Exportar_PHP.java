@@ -44,6 +44,13 @@ public class Exportar_PHP {
             if(line.trim().startsWith("mostrar")){
                 System.out.printf("echo \"%s\";", line.trim().replace("mostrar ", "").replace("!", "$"));
             }
+            
+            /*CONDICIONAL SI*/
+            if(line.trim().startsWith("#si")){
+                System.out.printf("%s(%s){%n",
+                                "if",
+                                line.substring(line.indexOf("#si ")+4));
+            }
         }
     }
 }
