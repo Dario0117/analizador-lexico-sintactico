@@ -5,9 +5,6 @@
  */
 package LOGICA;
 
-import java.util.HashMap;
-import java.util.Map;
-
 /**
  *
  * @author esteb
@@ -21,7 +18,17 @@ public class Exportar_PHP {
     
     public void exportar(){
         String[] lines = codigo.split("\n");
+        
         for(String line : lines){
+            if(line.trim().equals("")) continue;
+            spaces_loop:
+            for(char c : line.toCharArray()){
+                switch(c){
+                    case ' ': System.out.print(" "); break;
+                    case '\t': System.out.print("  "); break;
+                    default: break spaces_loop;
+                }
+            }
             
             /*INICIO Y FIN*/
             if(line.equals("ini")){
