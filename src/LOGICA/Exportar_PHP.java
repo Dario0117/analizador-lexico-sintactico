@@ -51,7 +51,7 @@ public class Exportar_PHP {
             if(line.trim().startsWith("#si")){
                 System.out.printf("%s(%s){%n",
                                 "if",
-                                line.trim().substring(line.indexOf("#si ")+4).replace("!", "$"));
+                                line.trim().substring(line.indexOf("#si ")+3).replace("!", "$"));
             }
             
             /*CONDICIONAL ENTONCES*/
@@ -62,13 +62,19 @@ public class Exportar_PHP {
             /*CONDICIONAL ENTONCES SI*/
             if(line.trim().startsWith("#entonces_si")){
                 System.out.printf("}else if(%s){%n",
-                        line.trim().substring(line.indexOf("#entonces_si ")+13).replace("!", "$"));
+                        line.trim().substring(line.indexOf("#entonces_si ")+12).replace("!", "$"));
             }
             
             /*CICLO FOR*/
             if(line.trim().startsWith("#para")){
                 String[] str = line.trim().substring(line.indexOf("#para ")+5).replace("!", "$").split(",");
                 System.out.printf("for(%s;%s;%s){%n",str[0],str[1],str[2]);
+            }
+            
+            /*CICLO WHILE*/
+            if(line.trim().startsWith("#mientras")){
+                System.out.printf("while(%s){%n",
+                        line.trim().substring(line.indexOf("#mientras ")+9).replace("!", "$"));
             }
             
             /*Finales de bloque*/
