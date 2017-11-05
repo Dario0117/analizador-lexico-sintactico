@@ -28,17 +28,19 @@ public class Exportar_PHP {
                     System.out.println("<?php");
                     continue;
             }else if(line.equals("fin")){
-                    System.out.println("\n?>");
+                    System.out.println("?>");
                     continue;
             }
             
             /*VARIABLES*/
             if(line.trim().startsWith("!")){
                 line = line.replace("!", "$");
-                String[] partes = line.split("\\|");
-                System.out.printf("%s = %s%n", partes[0], partes[2]);
+                String[] partes = line.trim().split("\\|");
+                System.out.printf("%s = %s;%n", partes[0], partes[2]);
                 continue;
             }
+            
+            /*LEER*/
             
             /*MOSTRAR*/
             if(line.trim().startsWith("mostrar")){
@@ -49,8 +51,14 @@ public class Exportar_PHP {
             if(line.trim().startsWith("#si")){
                 System.out.printf("%s(%s){%n",
                                 "if",
-                                line.substring(line.indexOf("#si ")+4));
+                                line.substring(line.indexOf("#si ")+4).replace("!", "$"));
             }
+            
+            /*CONDICIONAL ENTONCES*/
+            if(line.trim().startsWith("#entonces")){
+                System.out.println("}else{");
+            }
+            
             
             /*Finales de bloque*/
             if(line.trim().startsWith("#fin")){
