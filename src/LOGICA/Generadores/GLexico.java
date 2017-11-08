@@ -1,4 +1,4 @@
-package Generadores;
+package LOGICA.Generadores;
 
 import java.io.File;
 
@@ -6,7 +6,7 @@ public class GLexico
 {
     public static void main(String[] args) 
     {
-        String path="src/Analizadores/Lexico.jflex";
+        String path="src/LOGICA/Analizadores/Lexico.jflex";
         generarLexer(path);
     } 
     

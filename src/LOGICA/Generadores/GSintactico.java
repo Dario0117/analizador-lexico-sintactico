@@ -1,4 +1,4 @@
-package Generadores;
+package LOGICA.Generadores;
 
 public class GSintactico
 {
@@ -10,7 +10,7 @@ public class GSintactico
         opciones[0] = "-destdir";
         
         //Le damos la dirección, carpeta donde se va a generar el parser.java & el simbolosxxx.java
-        opciones[1] = "src/Analizadores";
+        opciones[1] = "src/LOGICA/Analizadores";
         
         //Seleccionamos la opción de nombre de archivo simbolos
         opciones[2] = "-symbols"; 
@@ -25,7 +25,7 @@ public class GSintactico
         opciones[5] = "Sintactico"; 
         
         //Le decimos donde se encuentra el archivo .cup 
-        opciones[6] = "src/Analizadores/Sintactico.cup"; 
+        opciones[6] = "src/LOGICA/Analizadores/Sintactico.cup"; 
         try 
         {
             java_cup.Main.main(opciones);
