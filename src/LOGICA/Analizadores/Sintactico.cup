@@ -1,1 +1,151 @@
+package LOGICA.Analizadores;
+import java_cup.runtime.Symbol;
+import java.util.ArrayList;
+import java.util.LinkedList;
+
+parser code
+{:
+	public static LinkedList<NodoError> TablaErr = new LinkedList<NodoError>();
+	public int bandera = 0;
+	public int contador = 0;
+	public static NodoAst padre;
+	
+/**Metodo al que se llama automaticamente ante algun error sintactico*/
+public void syntax_error(Symbol s){
+	String lexema = s.value.toString();
+	int fila = s.right;
+	int columna = s.left;
+	System.out.println("!!!!!! Error Sintactico Recuperado !!!!!!");
+	System.out.println("\t\tLexema: "+lexema);
+	System.out.println("\t\tFila: "+fila);
+	System.out.println("\t\tColumna: "+columna);
+	NodoError datos = new NodoError(lexema, "ERROR SINTACTICO", fila, columna, "Simbolo no esperado");
+	TablaErr.add(datos);
+	bandera = 1;
+}
+
+/*Metodo al que se llama en el momento en que ya no es posible uan recuperacion de errores*/
+public void unrecovered_syntax_error(Symbol s) throws java.lang.Exception{
+	String lexema = s.value.toString();
+	int fila = s.right;
+	int columna = s.left;
+	System.out.println("!!!!!! Error Sintactico, Panic Mode !!!!!!");
+	System.out.println("\t\tLexema: "+lexema);
+	System.out.println("\t\tFila: "+fila);
+	System.out.println("\t\tColumna: "+columna);
+	NodoError datos = new NodoError(lexema, "ERROR SINTACTICO", fila, columna, "Simbolo no esperado Error Fatal");
+	TablaErr.add(datos);
+	bandera = 1;
+}
+:}
+
+action code
+{:
+	//Espacio que servira para metodos en el lenguaje de java
+:}
+
+//terminal Tini, Tfin, Rint, Rdeci, Rcade, Rbool, Tpara, Tmientras, Tsi, Tentonces, Tentonces_si, Ty, To, Tleer, Tmostrar, Tfin_para, Tfin_mientras, Tfin_si, Rtrue, Rfalse, Tmas, Tmenos, Tpor, Tentre, Tmenor, Tmayor, Tmayor_igual, Tmenor_igual, Tasign, Tdifer, Tigual, Tsep, Tcoma, Tnumero, Tid, Tcadena;
+
+terminal Tini, Tfin, Rdeci, Rbool, Rcade, Rint, Tid, Tmas, Tmenos, Tpor, Tentre, Tnumero, Tcadena;
+
+non terminal INICIO, PROGRAMA, CUERPO, VARIABLE, CICLO, CONDICIONAL_IF, MOSTRAR, LEER, OPERACION, TIPO, EXPRESION, E,T,F;
+
+start with INICIO;
+
+INICIO::= PROGRAMA:n{:
+	NodoAst nodo = new NodoAst(); nodo.idNod = contador; contador++; nodo.Etiqueta = "Inicio"; nodo.addHijos((NodoAst) n);
+	parser.padre = (NodoAst) nodo;
+	RESULT = nodo;
+:};
+
+PROGRAMA::= Tini CUERPO:n Tfin{:
+	NodoAst nodo = new NodoAst(); nodo.idNod = contador; contador++; nodo.Etiqueta = "CUERPO";
+	nodo.addHijos((NodoAst)n);
+	RESULT = nodo;
+:};
+
+CUERPO::=  VARIABLE:n {:
+	NodoAst nodo = new NodoAst(); nodo.idNod = contador; contador++; nodo.Etiqueta = "VARIABLE"; 
+	nodo.addHijos((NodoAst) n);
+	RESULT = nodo;
+:}
+	| CICLO:n1 {:
+	NodoAst nodo = new NodoAst(); nodo.idNod = contador; contador++; nodo.Etiqueta = "CICLO"; 
+	nodo.addHijos((NodoAst) n1);
+	RESULT = nodo;
+	:}
+	| CONDICIONAL_IF:n2 {:
+	NodoAst nodo = new NodoAst(); nodo.idNod = contador; contador++; nodo.Etiqueta = "CONDICIONAL_IF"; 
+	nodo.addHijos((NodoAst) n2);
+	RESULT = nodo;
+	:} 
+	| MOSTRAR:n3 {:
+	NodoAst nodo = new NodoAst(); nodo.idNod = contador; contador++; nodo.Etiqueta = "MOSTRAR"; 
+	nodo.addHijos((NodoAst) n3);
+	RESULT = nodo;
+	:}
+	| LEER:n4 {:
+	NodoAst nodo = new NodoAst(); nodo.idNod = contador; contador++; nodo.Etiqueta = "LEER"; 
+	nodo.addHijos((NodoAst) n4);
+	RESULT = nodo;
+	:}
+	| OPERACION:n5 {:
+	NodoAst nodo = new NodoAst(); nodo.idNod = contador; contador++; nodo.Etiqueta = "OPERACION"; 
+	nodo.addHijos((NodoAst) n5);
+	RESULT = nodo;
+	:};
+
+VARIABLE::= Tid TIPO:n EXPRESION:n1{:
+	NodoAst nodo = new NodoAst(); nodo.idNod = contador; contador++; nodo.Etiqueta = "VARIABLE";
+	NodoAst nodo1 = new NodoAst(); nodo1.idNod = contador; contador++; nodo1.Etiqueta = "id";
+	nodo.addHijos((NodoAst) n);
+	nodo.addHijos((NodoAst) n1);
+	RESULT = nodo;
+:}
+	| Tid:n {:
+	NodoAst nodo = new NodoAst(); nodo.idNod = contador; contador++; nodo.Etiqueta = "VARIABLE";
+	NodoAst nodo1 = new NodoAst(); nodo1.idNod = contador; contador++; nodo1.Etiqueta = "id";
+	nodo.addHijos((NodoAst) n);
+	RESULT = nodo;
+	:};
+
+TIPO::= Rint {:
+	NodoAst nodo = new NodoAst(); nodo.idNod = contador; contador++; nodo.Etiqueta = "int"; RESULT = nodo;
+	:}
+	| Rcade {:
+	NodoAst nodo = new NodoAst(); nodo.idNod = contador; contador++; nodo.Etiqueta = "cadena"; RESULT = nodo;
+	:}
+	| Rdeci {:
+	NodoAst nodo = new NodoAst(); nodo.idNod = contador; contador++; nodo.Etiqueta = "decimal"; RESULT = nodo;
+	:}
+	| Rbool {:
+	NodoAst nodo = new NodoAst(); nodo.idNod = contador; contador++; nodo.Etiqueta = "booleano"; RESULT = nodo;
+	:};
+	
+EXPRESION::= E:n {: RESULT = n; :};
+
+E::= E:n Tmas T:n1 {: 
+	NodoAst nodo = new NodoAst(); nodo.idNod = contador; contador++; nodo.Etiqueta = "+"; nodo.addHijos((NodoAst)n); nodo.addHijos((NodoAst)n1); RESULT = nodo; 
+	:}
+	| E:n Tmenos T:n1 {: 
+	NodoAst nodo = new NodoAst(); nodo.idNod = contador; contador++; nodo.Etiqueta = "-"; nodo.addHijos((NodoAst)n); nodo.addHijos((NodoAst)n1); RESULT = nodo; 
+	:}
+	| T:n {:
+	RESULT = n;
+	:};
+T::= T:n Tpor F:n1 {: 
+	NodoAst nodo = new NodoAst(); nodo.idNod = contador; contador++; nodo.Etiqueta = "*"; nodo.addHijos((NodoAst)n); nodo.addHijos((NodoAst)n1); RESULT = nodo; 
+	:} 
+	| T:n Tentre F:n1 {: 
+	NodoAst nodo = new NodoAst(); nodo.idNod = contador; contador++; nodo.Etiqueta = "/"; nodo.addHijos((NodoAst)n); nodo.addHijos((NodoAst)n1); RESULT = nodo; 
+	:}
+	| F:n {:
+	RESULT = n;
+	:};
+F::= Tnumero:n {:
+	NodoAst nodo = new NodoAst(); nodo.idNod = contador; contador++; nodo.Etiqueta = "Numero"; nodo.valor = n.toString(); RESULT = nodo;
+	:}
+	| Tcadena:n {:
+	NodoAst nodo = new NodoAst(); nodo.idNod = contador; contador++; nodo.Etiqueta = "Cadena"; nodo.valor = n.toString(); RESULT = nodo;
+	:};
 
