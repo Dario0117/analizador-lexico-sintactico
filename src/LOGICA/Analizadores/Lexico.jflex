@@ -2,13 +2,13 @@ package LOGICA.Analizadores;
 
 import java_cup.runtime.*;
 import java.util.ArrayList;
-import ajva.util.LinkedList;
+import java.util.LinkedList;
 
 %%
 
 %{
     public static LinkedList<NodoError> Errores = new LinkedList<NodoError>();
-    public static bandera = 0;
+    public static int bandera = 0;
 %}
 
 // Directivas
@@ -26,8 +26,8 @@ import ajva.util.LinkedList;
 
 digito = [0-9]
 numero = {digito}+
-letra = [a-ZA-ZñÑ]
-id = {"!"}{letra}({letra}|{digito}|"_")*
+letra = [a-zA-ZñÑ]
+id = {letra}({letra}|{digito}|"_")*
 cadena = "\""[^\"\n]*"\""
 
 %%
