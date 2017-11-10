@@ -27,7 +27,7 @@ import java.util.LinkedList;
 digito = [0-9]
 numero = {digito}+
 letra = [a-zA-ZñÑ]
-id = {letra}({letra}|{digito}|"_")*
+id = "!"{letra}({letra}|{digito}|"_")*
 cadena = "\""[^\"\n]*"\""
 
 %%
