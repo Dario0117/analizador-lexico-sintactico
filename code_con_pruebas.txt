@@ -1,0 +1,44 @@
+ini
+  !nombres
+  !n1|deci|1.2
+  !n2|cade|"ahhh eexee"
+  
+  leer !n2
+  
+  mostrar "jdfsdhfjksdfhsdkjfh" !n2
+  mostrar !n2 "jdfsdhfjksdfhsdkjfh"
+  mostrar !n2
+  mostrar "asd"
+  
+  !n1 = 1+2+2
+  !n2 = 1-2+!n2-!n2+5
+  !n3 = 1*2
+  !n4 = 1/2
+  !n5 = 1+2
+  
+  #si 3 > 2
+	mostrar "dsfsdfsdf"
+	#si 2 < 2
+		!x
+	#fin_si
+  #entonces_si 1 == 2
+	mostrar "eze"
+	mostrar "eze"
+	mostrar "eze"
+  #entonces_si 1 == 2
+	mostrar "eze"
+	mostrar "eze"
+	mostrar "eze"
+  #entonces
+    mostrar "mas izi aun"
+  #fin_si
+  
+  #para !i = 0, !i > 10, !i++
+	mostrar !i
+  #fin_para
+	
+   #mientras 1 == 200
+	 mostrar "!i++"
+   #fin_mientras
+   
+fin
