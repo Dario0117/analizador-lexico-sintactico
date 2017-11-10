@@ -8,21 +8,30 @@ package LOGICA.Analizadores;
 /** CUP generated class containing symbol constants. */
 public class Simbolos {
   /* terminals */
-  public static final int Tmas = 9;
-  public static final int Tini = 2;
+  public static final int Tid = 8;
   public static final int Rbool = 5;
+  public static final int Tcadena = 14;
+  public static final int Tmayor = 18;
+  public static final int Tfin_si = 16;
   public static final int Rint = 7;
   public static final int Tnumero = 13;
-  public static final int Tmenos = 10;
-  public static final int Tid = 8;
+  public static final int Tfin = 3;
+  public static final int Tsi = 15;
+  public static final int Tmas = 9;
+  public static final int Tmayor_igual = 19;
   public static final int EOF = 0;
+  public static final int Tentonces_si = 23;
+  public static final int Tmenos = 10;
+  public static final int Tmenor = 17;
   public static final int Tentre = 12;
   public static final int error = 1;
-  public static final int Rdeci = 4;
+  public static final int Tigual = 22;
+  public static final int Tini = 2;
   public static final int Tpor = 11;
+  public static final int Rdeci = 4;
+  public static final int Tdifer = 21;
   public static final int Rcade = 6;
-  public static final int Tfin = 3;
-  public static final int Tcadena = 14;
+  public static final int Tmenor_igual = 20;
   public static final String[] terminalNames = new String[] {
   "EOF",
   "error",
@@ -38,7 +47,16 @@ public class Simbolos {
   "Tpor",
   "Tentre",
   "Tnumero",
-  "Tcadena"
+  "Tcadena",
+  "Tsi",
+  "Tfin_si",
+  "Tmenor",
+  "Tmayor",
+  "Tmayor_igual",
+  "Tmenor_igual",
+  "Tdifer",
+  "Tigual",
+  "Tentonces_si"
   };
 }
 

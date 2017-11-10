@@ -5,7 +5,16 @@
  */
 package VISTA;
 
+import LOGICA.Analizadores.Lexico;
+import LOGICA.Analizadores.Sintactico;
 import LOGICA.Exportar_PHP;
+import PERSISTENCIA.IO;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.util.Arrays;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -94,6 +103,11 @@ public class Principal extends javax.swing.JFrame {
         JSP_Container.setViewportView(JTA_Field);
 
         jButton1.setText("Analizar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -194,6 +208,21 @@ public class Principal extends javax.swing.JFrame {
         php = new Exportar_PHP(this.JTA_Field.getText());
         php.exportar();
     }//GEN-LAST:event_ExportarActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        try {
+            // TODO add your handling code here:
+//            IO.Write("code.txt", Arrays.asList(this.JTA_Field.getText().split("\n")));
+            Lexico lexico = new Lexico(new FileReader(new File("code.txt")));
+            Sintactico asin = new Sintactico(lexico);
+            Object x = asin.parse().value;
+            System.out.println(lexico.bandera);
+            System.out.println(asin.bandera);
+        } catch (FileNotFoundException ex) {
+            ex.printStackTrace();
+        } catch (Exception ex) {
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

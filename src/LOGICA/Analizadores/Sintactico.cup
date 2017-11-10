@@ -46,9 +46,9 @@ action code
 
 //terminal Tini, Tfin, Rint, Rdeci, Rcade, Rbool, Tpara, Tmientras, Tsi, Tentonces, Tentonces_si, Ty, To, Tleer, Tmostrar, Tfin_para, Tfin_mientras, Tfin_si, Rtrue, Rfalse, Tmas, Tmenos, Tpor, Tentre, Tmenor, Tmayor, Tmayor_igual, Tmenor_igual, Tasign, Tdifer, Tigual, Tsep, Tcoma, Tnumero, Tid, Tcadena;
 
-terminal Tini, Tfin, Rdeci, Rbool, Rcade, Rint, Tid, Tmas, Tmenos, Tpor, Tentre, Tnumero, Tcadena;
+terminal Tini, Tfin, Rdeci, Rbool, Rcade, Rint, Tid, Tmas, Tmenos, Tpor, Tentre, Tnumero, Tcadena, Tsi, Tfin_si, Tmenor, Tmayor, Tmayor_igual, Tmenor_igual, Tdifer, Tigual, Tentonces_si;
 
-non terminal INICIO, PROGRAMA, CUERPO, VARIABLE, CICLO, CONDICIONAL_IF, MOSTRAR, LEER, OPERACION, TIPO, EXPRESION, E,T,F;
+non terminal INICIO, PROGRAMA, CUERPO, VARIABLE, CICLO, CONDICIONAL_IF, MOSTRAR, LEER, OPERACION, TIPO, EXPRESION, E,T,F, CONDICIONAL_IF_2, CONDICION, OPERADOR_COMPARADOR;
 
 start with INICIO;
 
@@ -58,39 +58,40 @@ INICIO::= PROGRAMA:n{:
 	RESULT = nodo;
 :};
 
-PROGRAMA::= Tini CUERPO:n Tfin{:
+PROGRAMA::= Tini CUERPO:n{:
 	NodoAst nodo = new NodoAst(); nodo.idNod = contador; contador++; nodo.Etiqueta = "CUERPO";
 	nodo.addHijos((NodoAst)n);
 	RESULT = nodo;
 :};
 
-CUERPO::=  VARIABLE:n {:
-	NodoAst nodo = new NodoAst(); nodo.idNod = contador; contador++; nodo.Etiqueta = "VARIABLE"; 
+CUERPO::=  VARIABLE:n CUERPO:n1 {:
+	NodoAst nodo = new NodoAst(); nodo.idNod = contador; contador++; nodo.Etiqueta = "CUERPO"; 
 	nodo.addHijos((NodoAst) n);
+	nodo.addHijos((NodoAst) n1);
 	RESULT = nodo;
 :}
 	| CICLO:n1 {:
-	NodoAst nodo = new NodoAst(); nodo.idNod = contador; contador++; nodo.Etiqueta = "CICLO"; 
+	NodoAst nodo = new NodoAst(); nodo.idNod = contador; contador++; nodo.Etiqueta = "CUERPO"; 
 	nodo.addHijos((NodoAst) n1);
 	RESULT = nodo;
 	:}
 	| CONDICIONAL_IF:n2 {:
-	NodoAst nodo = new NodoAst(); nodo.idNod = contador; contador++; nodo.Etiqueta = "CONDICIONAL_IF"; 
+	NodoAst nodo = new NodoAst(); nodo.idNod = contador; contador++; nodo.Etiqueta = "CUERPO"; 
 	nodo.addHijos((NodoAst) n2);
 	RESULT = nodo;
 	:} 
 	| MOSTRAR:n3 {:
-	NodoAst nodo = new NodoAst(); nodo.idNod = contador; contador++; nodo.Etiqueta = "MOSTRAR"; 
+	NodoAst nodo = new NodoAst(); nodo.idNod = contador; contador++; nodo.Etiqueta = "CUERPO"; 
 	nodo.addHijos((NodoAst) n3);
 	RESULT = nodo;
 	:}
 	| LEER:n4 {:
-	NodoAst nodo = new NodoAst(); nodo.idNod = contador; contador++; nodo.Etiqueta = "LEER"; 
+	NodoAst nodo = new NodoAst(); nodo.idNod = contador; contador++; nodo.Etiqueta = "CUERPO"; 
 	nodo.addHijos((NodoAst) n4);
 	RESULT = nodo;
 	:}
 	| OPERACION:n5 {:
-	NodoAst nodo = new NodoAst(); nodo.idNod = contador; contador++; nodo.Etiqueta = "OPERACION"; 
+	NodoAst nodo = new NodoAst(); nodo.idNod = contador; contador++; nodo.Etiqueta = "CUERPO"; 
 	nodo.addHijos((NodoAst) n5);
 	RESULT = nodo;
 	:};
@@ -122,7 +123,10 @@ TIPO::= Rint {:
 	NodoAst nodo = new NodoAst(); nodo.idNod = contador; contador++; nodo.Etiqueta = "booleano"; RESULT = nodo;
 	:};
 	
-EXPRESION::= E:n {: RESULT = n; :};
+EXPRESION::= E:n {: RESULT = n; :}
+        | Tfin{:
+        NodoAst nodo = new NodoAst(); nodo.idNod = contador; contador++; nodo.Etiqueta = "fin"; RESULT = nodo;
+        :};
 
 E::= E:n Tmas T:n1 {: 
 	NodoAst nodo = new NodoAst(); nodo.idNod = contador; contador++; nodo.Etiqueta = "+"; nodo.addHijos((NodoAst)n); nodo.addHijos((NodoAst)n1); RESULT = nodo; 
@@ -148,4 +152,62 @@ F::= Tnumero:n {:
 	| Tcadena:n {:
 	NodoAst nodo = new NodoAst(); nodo.idNod = contador; contador++; nodo.Etiqueta = "Cadena"; nodo.valor = n.toString(); RESULT = nodo;
 	:};
+
+CONDICIONAL_IF::= Tsi CONDICION:n CUERPO:n1 CONDICIONAL_IF_2:n2{:
+        NodoAst nodo = new NodoAst(); nodo.idNod = contador; contador++; nodo.Etiqueta = "CONDICIONAL_IF"; 
+	nodo.addHijos((NodoAst) n);
+	nodo.addHijos((NodoAst) n1);
+        nodo.addHijos((NodoAst) n2);
+	RESULT = nodo;
+        :};
+CONDICIONAL_IF_2::= Tfin_si{:
+        NodoAst nodo = new NodoAst(); nodo.idNod = contador; contador++; nodo.Etiqueta = "fin_si"; RESULT = nodo;
+        :} 
+        | Tfin_si Tfin{:
+        NodoAst nodo = new NodoAst(); nodo.idNod = contador; contador++; nodo.Etiqueta = "fin_si"; RESULT = nodo;
+        NodoAst nodo1 = new NodoAst(); nodo1.idNod = contador; contador++; nodo1.Etiqueta = "fin"; RESULT = nodo;
+        :} 
+        | Tentonces_si CUERPO:n Tfin_si{:
+        NodoAst nodo = new NodoAst(); nodo.idNod = contador; contador++; nodo.Etiqueta = "CONDICIONAL_IF_2";
+        nodo.addHijos((NodoAst) n);
+        RESULT = nodo;
+        :} 
+        | Tentonces_si CUERPO:n Tfin_si Tfin{:
+        NodoAst nodo = new NodoAst(); nodo.idNod = contador; contador++; nodo.Etiqueta = "CONDICIONAL_IF_2";
+        nodo.addHijos((NodoAst) n);
+        RESULT = nodo;
+        :} 
+        | Tentonces_si CONDICION:n CUERPO:n1 CONDICIONAL_IF_2:n2{:
+        NodoAst nodo = new NodoAst(); nodo.idNod = contador; contador++; nodo.Etiqueta = "CONDICIONAL_IF_2";
+        nodo.addHijos((NodoAst) n);
+        nodo.addHijos((NodoAst) n1);
+        nodo.addHijos((NodoAst) n2);
+        RESULT = nodo;
+        :}; 
+CONDICION::= Tid:n OPERADOR_COMPARADOR:n1 Tid:n2{:
+        NodoAst nodo = new NodoAst(); nodo.idNod = contador; contador++; nodo.Etiqueta = "CONDICION";
+        NodoAst nodo1 = new NodoAst(); nodo1.idNod = contador; contador++; nodo1.Etiqueta = "id";
+        NodoAst nodo2 = new NodoAst(); nodo2.idNod = contador; contador++; nodo1.Etiqueta = "id";
+        nodo.addHijos((NodoAst) n);
+        nodo.addHijos((NodoAst) n1);
+        nodo.addHijos((NodoAst) n2);
+        RESULT = nodo;
+        :};
+OPERADOR_COMPARADOR::=  Tmayor{:
+        NodoAst nodo = new NodoAst(); nodo.idNod = contador; contador++; nodo.Etiqueta = ">"; RESULT = nodo;        :} 
+        | Tmenor{:
+        NodoAst nodo = new NodoAst(); nodo.idNod = contador; contador++; nodo.Etiqueta = "<"; RESULT = nodo;
+        :} 
+        | Tmayor_igual{:
+        NodoAst nodo = new NodoAst(); nodo.idNod = contador; contador++; nodo.Etiqueta = ">="; RESULT = nodo;
+        :} 
+        | Tmenor_igual{:
+        NodoAst nodo = new NodoAst(); nodo.idNod = contador; contador++; nodo.Etiqueta = "<="; RESULT = nodo;
+        :} 
+        | Tigual{:
+        NodoAst nodo = new NodoAst(); nodo.idNod = contador; contador++; nodo.Etiqueta = "=="; RESULT = nodo;
+        :} 
+        | Tdifer{:
+        NodoAst nodo = new NodoAst(); nodo.idNod = contador; contador++; nodo.Etiqueta = "!="; RESULT = nodo;
+        :};
 
