@@ -25,7 +25,7 @@ import java.util.LinkedList;
 // Expresiones regulares
 
 digito = [0-9]
-numero = {digito}+
+numero = ({digito}+ | {digito}+"."{digito}+)
 letra = [a-zA-ZñÑ]
 id = "!"{letra}({letra}|{digito}|"_")*
 cadena = "\""[^\"\n]*"\""
@@ -38,7 +38,7 @@ cadena = "\""[^\"\n]*"\""
 <YYINITIAL> "fin"                   {System.out.println("Reconociendo: "+yytext()+", Tfin");
                                     return new Symbol(Simbolos.Tfin, yycolumn, yyline, yytext());}
 
-<YYINITIAL> "ente"                  {System.out.println("Reconociendo: "+yytext()+", Rente");
+<YYINITIAL> "ente"                  {System.out.println("Reconociendo: "+yytext()+", Rint");
                                     return new Symbol(Simbolos.Rint, yycolumn, yyline, yytext());}
 
 <YYINITIAL> "deci"                  {System.out.println("Reconociendo: "+yytext()+", Rdeci");
