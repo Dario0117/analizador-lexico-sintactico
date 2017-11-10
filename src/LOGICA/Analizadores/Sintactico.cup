@@ -45,9 +45,9 @@ action code
 
 //terminal Tini, Tfin, Rint, Rdeci, Rcade, Rbool, Tpara, Tmientras, Tsi, Tentonces, Tentonces_si, Ty, To, Tleer, Tmostrar, Tfin_para, Tfin_mientras, Tfin_si, Rtrue, Rfalse, Tmas, Tmenos, Tpor, Tentre, Tmenor, Tmayor, Tmayor_igual, Tmenor_igual, Tasign, Tdifer, Tigual, Tsep, Tcoma, Tnumero, Tid, Tcadena;
 
-terminal Tmostrar, Tleer, Tsep, Tini, Tfin, Rdeci, Rbool, Rcade, Rint, Tid, Tmas, Tmenos, Tpor, Tentre, Tnumero, Tcadena, Tsi, Tfin_si, Tmenor, Tmayor, Tmayor_igual, Tmenor_igual, Tdifer, Tigual, Tentonces_si;
+terminal Tasign, Tmostrar, Tleer, Tsep, Tini, Tfin, Rdeci, Rbool, Rcade, Rint, Tid, Tmas, Tmenos, Tpor, Tentre, Tnumero, Tcadena, Tsi, Tfin_si, Tmenor, Tmayor, Tmayor_igual, Tmenor_igual, Tdifer, Tigual, Tentonces_si;
 
-non terminal INICIO, PROGRAMA, CUERPO, VARIABLE, CICLO, CONDICIONAL_IF, MOSTRAR, LEER, OPERACION, TIPO, EXPRESION, E,T,F, CONDICIONAL_IF_2, CONDICION, OPERADOR_COMPARADOR;
+non terminal OPERACION, OPERAR, OPERADOR, INICIO, PROGRAMA, CUERPO, VARIABLE, CICLO, CONDICIONAL_IF, MOSTRAR, LEER, TIPO, EXPRESION, E,T,F, CONDICIONAL_IF_2, CONDICION, OPERADOR_COMPARADOR;
 
 start with INICIO;
 
@@ -55,7 +55,7 @@ INICIO::= PROGRAMA;
 
 PROGRAMA::= Tini CUERPO;
 
-CUERPO::= VARIABLE CUERPO | VARIABLE Tfin | LEER CUERPO | LEER Tfin | MOSTRAR CUERPO | MOSTRAR Tfin | OPERACION | CONDICIONAL_IF | CICLO;
+CUERPO::= VARIABLE CUERPO | VARIABLE Tfin | LEER CUERPO | LEER Tfin | MOSTRAR CUERPO | MOSTRAR Tfin | OPERACION CUERPO | OPERACION Tfin | CONDICIONAL_IF | CICLO;
 
 VARIABLE::= Tid Tsep TIPO Tsep EXPRESION | Tid ;
 
@@ -72,6 +72,13 @@ F::= Tnumero | Tcadena;
 LEER::= Tleer Tid;
 
 MOSTRAR::= Tmostrar Tcadena  | Tmostrar Tid Tcadena | Tmostrar Tid;
+
+OPERACION ::= Tid Tasign OPERAR;
+OPERAR ::= Tnumero OPERADOR Tnumero | Tnumero OPERADOR OPERAR 
+         | Tnumero OPERADOR Tid
+         | Tid OPERADOR Tnumero | Tid OPERADOR OPERAR 
+         | Tid OPERADOR Tid;
+OPERADOR ::= Tmas | Tmenos | Tpor | Tentre;
 
 CONDICIONAL_IF::= Tsi CONDICION CUERPO CONDICIONAL_IF_2;
 
