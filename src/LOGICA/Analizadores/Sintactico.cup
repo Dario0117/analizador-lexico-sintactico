@@ -45,7 +45,7 @@ action code
 
 //terminal Tini, Tfin, Rint, Rdeci, Rcade, Rbool, Tpara, Tmientras, Tsi, Tentonces, Tentonces_si, Ty, To, Tleer, Tmostrar, Tfin_para, Tfin_mientras, Tfin_si, Rtrue, Rfalse, Tmas, Tmenos, Tpor, Tentre, Tmenor, Tmayor, Tmayor_igual, Tmenor_igual, Tasign, Tdifer, Tigual, Tsep, Tcoma, Tnumero, Tid, Tcadena;
 
-terminal Tsep, Tini, Tfin, Rdeci, Rbool, Rcade, Rint, Tid, Tmas, Tmenos, Tpor, Tentre, Tnumero, Tcadena, Tsi, Tfin_si, Tmenor, Tmayor, Tmayor_igual, Tmenor_igual, Tdifer, Tigual, Tentonces_si;
+terminal Tmostrar, Tleer, Tsep, Tini, Tfin, Rdeci, Rbool, Rcade, Rint, Tid, Tmas, Tmenos, Tpor, Tentre, Tnumero, Tcadena, Tsi, Tfin_si, Tmenor, Tmayor, Tmayor_igual, Tmenor_igual, Tdifer, Tigual, Tentonces_si;
 
 non terminal INICIO, PROGRAMA, CUERPO, VARIABLE, CICLO, CONDICIONAL_IF, MOSTRAR, LEER, OPERACION, TIPO, EXPRESION, E,T,F, CONDICIONAL_IF_2, CONDICION, OPERADOR_COMPARADOR;
 
@@ -55,7 +55,7 @@ INICIO::= PROGRAMA;
 
 PROGRAMA::= Tini CUERPO;
 
-CUERPO::= VARIABLE CUERPO | VARIABLE Tfin | CICLO | CONDICIONAL_IF  | MOSTRAR | LEER | OPERACION ;
+CUERPO::= VARIABLE CUERPO | VARIABLE Tfin | LEER CUERPO | LEER Tfin | MOSTRAR CUERPO | MOSTRAR Tfin | OPERACION | CONDICIONAL_IF | CICLO;
 
 VARIABLE::= Tid Tsep TIPO Tsep EXPRESION | Tid ;
 
@@ -68,6 +68,10 @@ E::= E Tmas T | E Tmenos T | T;
 T::= T Tpor F | T Tentre F | F;
 
 F::= Tnumero | Tcadena;
+
+LEER::= Tleer Tid;
+
+MOSTRAR::= Tmostrar Tcadena  | Tmostrar Tid Tcadena | Tmostrar Tid;
 
 CONDICIONAL_IF::= Tsi CONDICION CUERPO CONDICIONAL_IF_2;
 
