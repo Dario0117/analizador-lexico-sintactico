@@ -37,13 +37,12 @@ public class Lexico implements java_cup.runtime.Scanner {
    * Translates characters to character classes
    */
   private static final String ZZ_CMAP_PACKED = 
-    "\11\0\1\43\1\7\1\44\1\43\1\43\22\0\1\43\1\4\1\6"+
-    "\1\23\6\0\1\34\1\32\1\42\1\33\1\2\1\35\12\1\2\0"+
-    "\1\36\1\40\1\37\2\0\32\3\4\0\1\5\1\0\1\17\1\20"+
+    "\11\0\1\42\1\7\1\43\1\42\1\42\22\0\1\42\1\4\1\6"+
+    "\1\23\6\0\1\33\1\31\1\41\1\32\1\2\1\34\12\1\2\0"+
+    "\1\35\1\37\1\36\2\0\32\3\4\0\1\5\1\0\1\17\1\20"+
     "\1\16\1\15\1\13\1\12\2\3\1\10\2\3\1\22\1\26\1\11"+
-    "\1\21\1\24\1\3\1\25\1\27\1\14\1\31\3\3\1\30\1\3"+
-    "\1\0\1\41\10\0\1\44\113\0\1\3\37\0\1\3\u1f36\0\1\44"+
-    "\1\44\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\udfe6\0";
+    "\1\21\1\24\1\3\1\25\1\27\1\14\1\30\5\3\1\0\1\40"+
+    "\10\0\1\43\113\0\1\3\37\0\1\3\u1f36\0\1\43\1\43\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\udfe6\0";
 
   /** 
    * Translates characters to character classes
@@ -56,13 +55,13 @@ public class Lexico implements java_cup.runtime.Scanner {
   private static final int [] ZZ_ACTION = zzUnpackAction();
 
   private static final String ZZ_ACTION_PACKED_0 =
-    "\1\0\1\1\1\2\2\1\1\3\7\1\1\4\3\1"+
-    "\1\5\1\6\1\7\1\10\1\11\1\12\1\13\1\14"+
-    "\1\15\1\16\1\0\1\17\1\20\1\0\1\21\17\0"+
-    "\1\22\1\23\1\24\1\2\1\25\1\26\13\0\1\27"+
-    "\2\0\1\30\1\31\1\32\1\33\1\34\1\35\5\0"+
-    "\1\36\2\0\1\37\12\0\1\40\2\0\1\41\4\0"+
-    "\1\42\1\0\1\43\1\44\5\0\1\45\1\46";
+    "\1\0\1\1\1\2\2\1\1\3\12\1\1\4\1\5"+
+    "\1\6\1\7\1\10\1\11\1\12\1\13\1\14\1\0"+
+    "\1\15\1\16\1\0\1\17\17\0\1\20\1\21\1\22"+
+    "\1\23\1\24\1\2\1\25\1\26\13\0\1\27\2\0"+
+    "\1\30\1\31\1\32\1\33\1\34\1\35\5\0\1\36"+
+    "\2\0\1\37\12\0\1\40\2\0\1\41\4\0\1\42"+
+    "\1\0\1\43\1\44\5\0\1\45\1\46";
 
   private static int [] zzUnpackAction() {
     int [] result = new int[111];
@@ -90,20 +89,20 @@ public class Lexico implements java_cup.runtime.Scanner {
   private static final int [] ZZ_ROWMAP = zzUnpackRowMap();
 
   private static final String ZZ_ROWMAP_PACKED_0 =
-    "\0\0\0\45\0\112\0\157\0\224\0\45\0\271\0\336"+
-    "\0\u0103\0\u0128\0\u014d\0\u0172\0\u0197\0\45\0\u01bc\0\u01e1"+
-    "\0\u0206\0\45\0\45\0\45\0\45\0\45\0\u022b\0\u0250"+
-    "\0\u0275\0\45\0\45\0\u029a\0\u02bf\0\45\0\224\0\45"+
-    "\0\u02e4\0\u0309\0\u032e\0\u0353\0\u0378\0\u039d\0\u03c2\0\u03e7"+
-    "\0\u040c\0\u0431\0\u0456\0\u047b\0\u04a0\0\u04c5\0\u04ea\0\45"+
-    "\0\45\0\45\0\u029a\0\45\0\45\0\u050f\0\u0534\0\u0559"+
-    "\0\u057e\0\u05a3\0\u05c8\0\u05ed\0\u0612\0\u0637\0\u065c\0\u0681"+
-    "\0\45\0\u06a6\0\u06cb\0\45\0\45\0\45\0\45\0\45"+
-    "\0\45\0\u06f0\0\u0715\0\u073a\0\u075f\0\u0784\0\45\0\u07a9"+
-    "\0\u07ce\0\45\0\u07f3\0\u0818\0\u083d\0\u0862\0\u0887\0\u08ac"+
-    "\0\u08d1\0\u08f6\0\u091b\0\u0940\0\45\0\u0965\0\u098a\0\45"+
-    "\0\u09af\0\u09d4\0\u09f9\0\u0a1e\0\45\0\u0a43\0\u0a68\0\45"+
-    "\0\u0a8d\0\u0ab2\0\u0ad7\0\u0afc\0\u0b21\0\45\0\45";
+    "\0\0\0\44\0\110\0\154\0\220\0\44\0\264\0\330"+
+    "\0\374\0\u0120\0\u0144\0\u0168\0\u018c\0\u01b0\0\u01d4\0\u01f8"+
+    "\0\u021c\0\u0240\0\44\0\44\0\u0264\0\u0288\0\u02ac\0\44"+
+    "\0\44\0\u02d0\0\u02f4\0\44\0\220\0\44\0\u0318\0\u033c"+
+    "\0\u0360\0\u0384\0\u03a8\0\u03cc\0\u03f0\0\u0414\0\u0438\0\u045c"+
+    "\0\u0480\0\u04a4\0\u04c8\0\u04ec\0\u0510\0\44\0\44\0\44"+
+    "\0\44\0\44\0\u02d0\0\44\0\44\0\u0534\0\u0558\0\u057c"+
+    "\0\u05a0\0\u05c4\0\u05e8\0\u060c\0\u0630\0\u0654\0\u0678\0\u069c"+
+    "\0\44\0\u06c0\0\u06e4\0\44\0\44\0\44\0\44\0\44"+
+    "\0\44\0\u0708\0\u072c\0\u0750\0\u0774\0\u0798\0\44\0\u07bc"+
+    "\0\u07e0\0\44\0\u0804\0\u0828\0\u084c\0\u0870\0\u0894\0\u08b8"+
+    "\0\u08dc\0\u0900\0\u0924\0\u0948\0\44\0\u096c\0\u0990\0\44"+
+    "\0\u09b4\0\u09d8\0\u09fc\0\u0a20\0\44\0\u0a44\0\u0a68\0\44"+
+    "\0\u0a8c\0\u0ab0\0\u0ad4\0\u0af8\0\u0b1c\0\44\0\44";
 
   private static int [] zzUnpackRowMap() {
     int [] result = new int[111];
@@ -131,34 +130,35 @@ public class Lexico implements java_cup.runtime.Scanner {
   private static final String ZZ_TRANS_PACKED_0 =
     "\1\2\1\3\2\2\1\4\1\2\1\5\1\6\1\7"+
     "\1\2\1\10\1\11\1\12\1\13\1\14\1\2\1\15"+
-    "\1\16\1\17\1\20\2\2\1\21\1\2\1\22\1\2"+
-    "\1\23\1\24\1\25\1\26\1\27\1\30\1\31\1\32"+
-    "\1\33\1\6\47\0\1\3\1\34\45\0\1\35\4\0"+
-    "\13\35\1\0\6\35\6\0\1\36\4\0\6\37\1\40"+
-    "\1\0\35\37\11\0\1\41\43\0\1\42\6\0\1\43"+
-    "\36\0\1\44\60\0\1\45\32\0\1\46\50\0\1\47"+
-    "\46\0\1\50\36\0\1\51\43\0\1\52\1\53\10\0"+
-    "\1\54\1\0\1\55\1\56\36\0\1\57\63\0\1\60"+
-    "\44\0\1\61\44\0\1\62\5\0\1\63\44\0\1\35"+
-    "\1\0\1\35\1\0\1\35\2\0\13\35\1\0\6\35"+
-    "\23\0\1\64\45\0\1\65\55\0\1\66\36\0\1\67"+
-    "\61\0\1\70\31\0\1\71\43\0\1\72\50\0\1\73"+
-    "\36\0\1\74\41\0\1\75\45\0\1\76\52\0\1\77"+
-    "\35\0\1\100\44\0\1\101\63\0\1\102\44\0\1\103"+
-    "\30\0\1\104\44\0\1\105\41\0\1\106\47\0\1\107"+
-    "\53\0\1\110\47\0\1\111\30\0\1\112\47\0\1\113"+
-    "\55\0\1\114\32\0\1\115\45\0\1\116\43\0\1\117"+
-    "\36\0\1\120\60\0\1\121\42\0\1\122\36\0\1\123"+
-    "\60\0\1\124\43\0\1\125\1\0\1\126\1\127\26\0"+
-    "\1\130\47\0\1\131\47\0\1\132\44\0\1\133\35\0"+
-    "\1\134\44\0\1\135\52\0\1\136\53\0\1\137\44\0"+
-    "\1\140\44\0\1\141\32\0\1\142\44\0\1\143\50\0"+
-    "\1\144\44\0\1\145\36\0\1\146\62\0\1\147\44\0"+
-    "\1\150\31\0\1\151\35\0\1\152\64\0\1\153\46\0"+
-    "\1\154\34\0\1\155\35\0\1\156\63\0\1\157\15\0";
+    "\1\2\1\16\1\17\2\2\1\20\2\2\1\21\1\22"+
+    "\1\23\1\24\1\25\1\26\1\27\1\30\1\31\1\6"+
+    "\46\0\1\3\1\32\44\0\1\33\4\0\13\33\1\0"+
+    "\5\33\6\0\1\34\4\0\6\35\1\36\1\0\34\35"+
+    "\11\0\1\37\42\0\1\40\6\0\1\41\35\0\1\42"+
+    "\57\0\1\43\31\0\1\44\47\0\1\45\45\0\1\46"+
+    "\35\0\1\47\42\0\1\50\1\51\10\0\1\52\1\0"+
+    "\1\53\1\54\35\0\1\55\53\0\1\56\44\0\1\57"+
+    "\50\0\1\60\43\0\1\61\43\0\1\62\5\0\1\63"+
+    "\43\0\1\33\1\0\1\33\1\0\1\33\2\0\13\33"+
+    "\1\0\5\33\23\0\1\64\44\0\1\65\54\0\1\66"+
+    "\35\0\1\67\57\0\1\70\31\0\1\71\42\0\1\72"+
+    "\47\0\1\73\35\0\1\74\40\0\1\75\44\0\1\76"+
+    "\51\0\1\77\34\0\1\100\43\0\1\101\62\0\1\102"+
+    "\43\0\1\103\27\0\1\104\43\0\1\105\40\0\1\106"+
+    "\46\0\1\107\52\0\1\110\46\0\1\111\27\0\1\112"+
+    "\46\0\1\113\54\0\1\114\31\0\1\115\44\0\1\116"+
+    "\42\0\1\117\35\0\1\120\57\0\1\121\41\0\1\122"+
+    "\35\0\1\123\57\0\1\124\42\0\1\125\1\0\1\126"+
+    "\1\127\25\0\1\130\46\0\1\131\46\0\1\132\43\0"+
+    "\1\133\34\0\1\134\43\0\1\135\51\0\1\136\52\0"+
+    "\1\137\43\0\1\140\43\0\1\141\31\0\1\142\43\0"+
+    "\1\143\47\0\1\144\43\0\1\145\35\0\1\146\61\0"+
+    "\1\147\43\0\1\150\30\0\1\151\34\0\1\152\63\0"+
+    "\1\153\45\0\1\154\33\0\1\155\34\0\1\156\62\0"+
+    "\1\157\14\0";
 
   private static int [] zzUnpackTrans() {
-    int [] result = new int[2886];
+    int [] result = new int[2880];
     int offset = 0;
     offset = zzUnpackTrans(ZZ_TRANS_PACKED_0, offset, result);
     return result;
@@ -196,11 +196,11 @@ public class Lexico implements java_cup.runtime.Scanner {
   private static final int [] ZZ_ATTRIBUTE = zzUnpackAttribute();
 
   private static final String ZZ_ATTRIBUTE_PACKED_0 =
-    "\1\0\1\11\3\1\1\11\7\1\1\11\3\1\5\11"+
-    "\3\1\2\11\1\0\1\1\1\11\1\0\1\11\17\0"+
-    "\3\11\1\1\2\11\13\0\1\11\2\0\6\11\5\0"+
-    "\1\11\2\0\1\11\12\0\1\11\2\0\1\11\4\0"+
-    "\1\11\1\0\1\1\1\11\5\0\2\11";
+    "\1\0\1\11\3\1\1\11\14\1\2\11\3\1\2\11"+
+    "\1\0\1\1\1\11\1\0\1\11\17\0\5\11\1\1"+
+    "\2\11\13\0\1\11\2\0\6\11\5\0\1\11\2\0"+
+    "\1\11\12\0\1\11\2\0\1\11\4\0\1\11\1\0"+
+    "\1\1\1\11\5\0\2\11";
 
   private static int [] zzUnpackAttribute() {
     int [] result = new int[111];
@@ -303,7 +303,7 @@ public class Lexico implements java_cup.runtime.Scanner {
     char [] map = new char[0x110000];
     int i = 0;  /* index in packed string  */
     int j = 0;  /* index in unpacked array */
-    while (i < 156) {
+    while (i < 152) {
       int  count = packed.charAt(i++);
       char value = packed.charAt(i++);
       do map[j++] = value; while (--count > 0);
@@ -684,73 +684,73 @@ public class Lexico implements java_cup.runtime.Scanner {
             }
           case 41: break;
           case 4: 
-            { System.out.println("Reconociendo: "+yytext()+", To");
-                                    return new Symbol(Simbolos.To, yycolumn, yyline, yytext());
-            }
-          case 42: break;
-          case 5: 
-            { System.out.println("Reconociendo: "+yytext()+", Ty");
-                                    return new Symbol(Simbolos.Ty, yycolumn, yyline, yytext());
-            }
-          case 43: break;
-          case 6: 
             { System.out.println("Reconociendo: "+yytext()+", Tmas");
                                     return new Symbol(Simbolos.Tmas, yycolumn, yyline, yytext());
             }
-          case 44: break;
-          case 7: 
+          case 42: break;
+          case 5: 
             { System.out.println("Reconociendo: "+yytext()+", Tmenos");
                                     return new Symbol(Simbolos.Tmenos, yycolumn, yyline, yytext());
             }
-          case 45: break;
-          case 8: 
+          case 43: break;
+          case 6: 
             { System.out.println("Reconociendo: "+yytext()+", Tpor");
                                     return new Symbol(Simbolos.Tpor, yycolumn, yyline, yytext());
             }
-          case 46: break;
-          case 9: 
+          case 44: break;
+          case 7: 
             { System.out.println("Reconociendo: "+yytext()+", Tentre");
                                     return new Symbol(Simbolos.Tentre, yycolumn, yyline, yytext());
             }
-          case 47: break;
-          case 10: 
+          case 45: break;
+          case 8: 
             { System.out.println("Reconociendo: "+yytext()+", Tmenor");
                                     return new Symbol(Simbolos.Tmenor, yycolumn, yyline, yytext());
             }
-          case 48: break;
-          case 11: 
+          case 46: break;
+          case 9: 
             { System.out.println("Reconociendo: "+yytext()+", Tmayor");
                                     return new Symbol(Simbolos.Tmayor, yycolumn, yyline, yytext());
             }
-          case 49: break;
-          case 12: 
+          case 47: break;
+          case 10: 
             { System.out.println("Reconociendo: "+yytext()+", Tasign");
                                     return new Symbol(Simbolos.Tasign, yycolumn, yyline, yytext());
             }
-          case 50: break;
-          case 13: 
+          case 48: break;
+          case 11: 
             { System.out.println("Reconociendo: "+yytext()+", Tsep");
                                     return new Symbol(Simbolos.Tsep, yycolumn, yyline, yytext());
             }
-          case 51: break;
-          case 14: 
+          case 49: break;
+          case 12: 
             { System.out.println("Reconociendo: "+yytext()+", Tcoma");
                                     return new Symbol(Simbolos.Tcoma, yycolumn, yyline, yytext());
             }
-          case 52: break;
-          case 15: 
+          case 50: break;
+          case 13: 
             { System.out.println("Reconociendo: "+yytext()+", Tid");
                                     return new Symbol(Simbolos.Tid, yycolumn, yyline, yytext());
             }
-          case 53: break;
-          case 16: 
+          case 51: break;
+          case 14: 
             { System.out.println("Reconociendo: "+yytext()+", Tdifer");
                                     return new Symbol(Simbolos.Tdifer, yycolumn, yyline, yytext());
             }
-          case 54: break;
-          case 17: 
+          case 52: break;
+          case 15: 
             { System.out.println("Reconociendo: "+yytext()+", Tcadena");
                                     return new Symbol(Simbolos.Tcadena, yycolumn, yyline, yytext());
+            }
+          case 53: break;
+          case 16: 
+            { System.out.println("Reconociendo: "+yytext()+", Tmasmas");
+                                    return new Symbol(Simbolos.Tmasmas, yycolumn, yyline, yytext());
+            }
+          case 54: break;
+          case 17: 
+            { System.out.println("Reconociendo: "+yytext()+", Tmenosmenos");
+                                    return new Symbol(Simbolos.Tmenosmenos, yycolumn, yyline, yytext());
             }
           case 55: break;
           case 18: 

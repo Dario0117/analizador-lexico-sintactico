@@ -65,12 +65,6 @@ cadena = "\""[^\"\n]*"\""
 <YYINITIAL> "#entonces_si"          {System.out.println("Reconociendo: "+yytext()+", Tentonces_si");
                                     return new Symbol(Simbolos.Tentonces_si, yycolumn, yyline, yytext());}
 
-<YYINITIAL> "y"                     {System.out.println("Reconociendo: "+yytext()+", Ty");
-                                    return new Symbol(Simbolos.Ty, yycolumn, yyline, yytext());}
-
-<YYINITIAL> "o"                     {System.out.println("Reconociendo: "+yytext()+", To");
-                                    return new Symbol(Simbolos.To, yycolumn, yyline, yytext());}
-
 <YYINITIAL> "leer"                  {System.out.println("Reconociendo: "+yytext()+", Tleer");
                                     return new Symbol(Simbolos.Tleer, yycolumn, yyline, yytext());}
 
@@ -95,8 +89,14 @@ cadena = "\""[^\"\n]*"\""
 <YYINITIAL> "+"                     {System.out.println("Reconociendo: "+yytext()+", Tmas");
                                     return new Symbol(Simbolos.Tmas, yycolumn, yyline, yytext());}
 
+<YYINITIAL> "++"                    {System.out.println("Reconociendo: "+yytext()+", Tmasmas");
+                                    return new Symbol(Simbolos.Tmasmas, yycolumn, yyline, yytext());}
+
 <YYINITIAL> "-"                     {System.out.println("Reconociendo: "+yytext()+", Tmenos");
                                     return new Symbol(Simbolos.Tmenos, yycolumn, yyline, yytext());}
+
+<YYINITIAL> "--"                    {System.out.println("Reconociendo: "+yytext()+", Tmenosmenos");
+                                    return new Symbol(Simbolos.Tmenosmenos, yycolumn, yyline, yytext());}
 
 <YYINITIAL> "*"                     {System.out.println("Reconociendo: "+yytext()+", Tpor");
                                     return new Symbol(Simbolos.Tpor, yycolumn, yyline, yytext());}

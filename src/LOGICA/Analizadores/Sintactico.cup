@@ -45,9 +45,9 @@ action code
 
 //terminal Tini, Tfin, Rint, Rdeci, Rcade, Rbool, Tpara, Tmientras, Tsi, Tentonces, Tentonces_si, Ty, To, Tleer, Tmostrar, Tfin_para, Tfin_mientras, Tfin_si, Rtrue, Rfalse, Tmas, Tmenos, Tpor, Tentre, Tmenor, Tmayor, Tmayor_igual, Tmenor_igual, Tasign, Tdifer, Tigual, Tsep, Tcoma, Tnumero, Tid, Tcadena;
 
-terminal Tentonces, Tasign, Tmostrar, Tleer, Tsep, Tini, Tfin, Rdeci, Rbool, Rcade, Rint, Tid, Tmas, Tmenos, Tpor, Tentre, Tnumero, Tcadena, Tsi, Tfin_si, Tmenor, Tmayor, Tmayor_igual, Tmenor_igual, Tdifer, Tigual, Tentonces_si;
+terminal Tmasmas, Tmenosmenos, Tpara, Tfin_para, Tmientras, Tfin_mientras, Tcoma, Tentonces, Tasign, Tmostrar, Tleer, Tsep, Tini, Tfin, Rdeci, Rbool, Rcade, Rint, Tid, Tmas, Tmenos, Tpor, Tentre, Tnumero, Tcadena, Tsi, Tfin_si, Tmenor, Tmayor, Tmayor_igual, Tmenor_igual, Tdifer, Tigual, Tentonces_si;
 
-non terminal CUERPO_2, OPERACION, OPERAR, OPERADOR, INICIO, PROGRAMA, CUERPO, VARIABLE, CICLO, CONDICIONAL_IF, MOSTRAR, LEER, TIPO, EXPRESION, E,T,F, CONDICIONAL_IF_2, CONDICION, OPERADOR_COMPARADOR;
+non terminal CICLO_FOR, ITERADOR, CICLO_WHILE, CUERPO_2, OPERACION, OPERAR, OPERADOR, INICIO, PROGRAMA, CUERPO, VARIABLE, CICLO, CONDICIONAL_IF, MOSTRAR, LEER, TIPO, EXPRESION, E,T,F, CONDICIONAL_IF_2, CONDICION, OPERADOR_COMPARADOR;
 
 start with INICIO;
 
@@ -60,7 +60,7 @@ CUERPO::= VARIABLE CUERPO | VARIABLE Tfin
         | MOSTRAR CUERPO | MOSTRAR Tfin 
         | OPERACION CUERPO | OPERACION Tfin 
         | CONDICIONAL_IF CUERPO | CONDICIONAL_IF Tfin
-        | CICLO;
+        | CICLO CUERPO | CICLO Tfin;
 
 CUERPO_2 ::= VARIABLE CUERPO_2 | VARIABLE
         | LEER CUERPO_2 | LEER
@@ -105,3 +105,10 @@ CONDICION::= Tid OPERADOR_COMPARADOR Tid
 
 OPERADOR_COMPARADOR::=  Tmayor | Tmenor | Tmayor_igual | Tmenor_igual | Tigual | Tdifer;
 
+CICLO ::= CICLO_FOR | CICLO_WHILE;
+
+CICLO_FOR ::= Tpara Tid Tasign Tnumero Tcoma CONDICION Tcoma ITERADOR CUERPO_2 Tfin_para;
+
+ITERADOR ::= Tid Tmasmas | Tid Tmenosmenos;
+
+CICLO_WHILE ::= Tmientras CONDICION CUERPO_2 Tfin_mientras;
