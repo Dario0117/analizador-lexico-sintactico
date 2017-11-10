@@ -6,7 +6,6 @@
 package LOGICA.Analizadores;
 
 import java_cup.runtime.Symbol;
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java_cup.runtime.XMLElement;
 
@@ -370,10 +369,6 @@ public void unrecovered_syntax_error(Symbol s) throws java.lang.Exception{
 /** Cup generated class to encapsulate user supplied action code.*/
 @SuppressWarnings({"rawtypes", "unchecked", "unused"})
 class CUP$Sintactico$actions {
-
-
-	//Espacio que servira para metodos en el lenguaje de java
-
   private final Sintactico parser;
 
   /** Constructor */

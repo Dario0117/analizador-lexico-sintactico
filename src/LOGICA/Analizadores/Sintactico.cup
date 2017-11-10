@@ -1,7 +1,12 @@
 package LOGICA.Analizadores;
 import java_cup.runtime.Symbol;
-import java.util.ArrayList;
 import java.util.LinkedList;
+
+/**
+ *
+ * @author Esteban Dario Barboza Primera
+ * @author Jesus David Barajas González
+ */
 
 parser code
 {:
@@ -37,13 +42,6 @@ public void unrecovered_syntax_error(Symbol s) throws java.lang.Exception{
 	bandera = 1;
 }
 :}
-
-action code
-{:
-	//Espacio que servira para metodos en el lenguaje de java
-:}
-
-//terminal Tini, Tfin, Rint, Rdeci, Rcade, Rbool, Tpara, Tmientras, Tsi, Tentonces, Tentonces_si, Ty, To, Tleer, Tmostrar, Tfin_para, Tfin_mientras, Tfin_si, Rtrue, Rfalse, Tmas, Tmenos, Tpor, Tentre, Tmenor, Tmayor, Tmayor_igual, Tmenor_igual, Tasign, Tdifer, Tigual, Tsep, Tcoma, Tnumero, Tid, Tcadena;
 
 terminal Tmasmas, Tmenosmenos, Tpara, Tfin_para, Tmientras, Tfin_mientras, Tcoma, Tentonces, Tasign, Tmostrar, Tleer, Tsep, Tini, Tfin, Rdeci, Rbool, Rcade, Rint, Tid, Tmas, Tmenos, Tpor, Tentre, Tnumero, Tcadena, Tsi, Tfin_si, Tmenor, Tmayor, Tmayor_igual, Tmenor_igual, Tdifer, Tigual, Tentonces_si;
 

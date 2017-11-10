@@ -1,8 +1,13 @@
 package LOGICA.Analizadores;
 
 import java_cup.runtime.*;
-import java.util.ArrayList;
 import java.util.LinkedList;
+
+/**
+ *
+ * @author Esteban Dario Barboza Primera
+ * @author Jesus David Barajas González
+ */
 
 %%
 
@@ -79,12 +84,6 @@ cadena = "\""[^\"\n]*"\""
 
 <YYINITIAL> "#fin_si"               {System.out.println("Reconociendo: "+yytext()+", Tfin_si");
                                     return new Symbol(Simbolos.Tfin_si, yycolumn, yyline, yytext());}
-
-<YYINITIAL> "true"                  {System.out.println("Reconociendo: "+yytext()+", Rtrue");
-                                    return new Symbol(Simbolos.Rtrue, yycolumn, yyline, yytext());}
-
-<YYINITIAL> "false"                 {System.out.println("Reconociendo: "+yytext()+", Rfalse");
-                                    return new Symbol(Simbolos.Rfalse, yycolumn, yyline, yytext());}
 
 <YYINITIAL> "+"                     {System.out.println("Reconociendo: "+yytext()+", Tmas");
                                     return new Symbol(Simbolos.Tmas, yycolumn, yyline, yytext());}

@@ -7,7 +7,8 @@ package LOGICA;
 
 /**
  *
- * @author esteb
+ * @author Esteban Dario Barboza Primera
+ * @author Jesus David Barajas González
  */
 public class Exportar_PHP {
     private final String codigo;
