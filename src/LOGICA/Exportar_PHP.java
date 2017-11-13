@@ -44,7 +44,11 @@ public class Exportar_PHP {
             if(line.trim().startsWith("!")){
                 line = line.replace("!", "$");
                 String[] partes = line.trim().split("\\|");
-                System.out.printf("%s = %s;%n", partes[0], partes[2]);
+                if(partes.length == 1){
+                    System.out.printf("%s;%n", partes[0]);
+                }else{
+                    System.out.printf("%s = %s;%n", partes[0], partes[2]);
+                }
                 continue;
             }
             
@@ -52,7 +56,8 @@ public class Exportar_PHP {
             
             /*MOSTRAR*/
             if(line.trim().startsWith("mostrar")){
-                System.out.printf("echo \"%s\";%n", line.trim().replace("mostrar ", "").replace("!", "$"));
+                System.out.printf("echo %s;%n", line.trim().replace("mostrar ", "").replace("!", "$"));
+                continue;
             }
             
             /*CONDICIONAL SI*/
@@ -60,29 +65,34 @@ public class Exportar_PHP {
                 System.out.printf("%s(%s){%n",
                                 "if",
                                 line.trim().substring(line.indexOf("#si ")+3).replace("!", "$"));
+                continue;
             }
             
             /*CONDICIONAL ENTONCES*/
             if(line.trim().equals("#entonces")){
                 System.out.println("}else{");
+                continue;
             }
             
             /*CONDICIONAL ENTONCES SI*/
             if(line.trim().startsWith("#entonces_si")){
                 System.out.printf("}else if(%s){%n",
                         line.trim().substring(line.indexOf("#entonces_si ")+12).replace("!", "$"));
+                continue;
             }
             
             /*CICLO FOR*/
             if(line.trim().startsWith("#para")){
                 String[] str = line.trim().substring(line.indexOf("#para ")+5).replace("!", "$").split(",");
                 System.out.printf("for(%s;%s;%s){%n",str[0],str[1],str[2]);
+                continue;
             }
             
             /*CICLO WHILE*/
             if(line.trim().startsWith("#mientras")){
                 System.out.printf("while(%s){%n",
                         line.trim().substring(line.indexOf("#mientras ")+9).replace("!", "$"));
+                continue;
             }
             
             /*Finales de bloque*/
