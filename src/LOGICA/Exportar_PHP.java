@@ -56,7 +56,12 @@ public class Exportar_PHP {
             
             /*MOSTRAR*/
             if(line.trim().startsWith("mostrar")){
-                System.out.printf("echo %s;%n", line.trim().replace("mostrar ", "").replace("!", "$"));
+                System.out.printf("echo \"%s\";%n", 
+                        line.trim()
+                            .replace("mostrar ", "")
+                            .replace("!", "$")
+                            .replace("\"", "")
+                );
                 continue;
             }
             
