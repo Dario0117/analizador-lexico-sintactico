@@ -8,9 +8,14 @@ package VISTA;
 import LOGICA.Analizador;
 import LOGICA.Exportar_PHP;
 import LOGICA.Utilidades.MessageWithLink;
+import PERSISTENCIA.IO;
+import java.io.File;
+import static java.lang.System.exit;
 import java.util.ArrayList;
 import java.util.Arrays;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileSystemView;
 
 /**
  *
@@ -131,6 +136,11 @@ public class Principal extends javax.swing.JFrame {
         Archivo.setText("Archivo");
 
         Nuevo.setText("Nuevo");
+        Nuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NuevoActionPerformed(evt);
+            }
+        });
         Archivo.add(Nuevo);
 
         Guardar.setText("Guardar");
@@ -155,6 +165,11 @@ public class Principal extends javax.swing.JFrame {
         Archivo.add(jSeparator2);
 
         Cerrar.setText("Cerrar");
+        Cerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CerrarActionPerformed(evt);
+            }
+        });
         Archivo.add(Cerrar);
 
         jMenuBar1.add(Archivo);
@@ -207,6 +222,15 @@ public class Principal extends javax.swing.JFrame {
 
     private void ImportarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImportarActionPerformed
         // TODO add your handling code here:
+        JFileChooser jfc = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
+
+        int returnValue = jfc.showOpenDialog(null);
+        // int returnValue = jfc.showSaveDialog(null);
+
+        if (returnValue == JFileChooser.APPROVE_OPTION) {
+                File selectedFile = jfc.getSelectedFile();
+                this.JTA_Field.setText(IO.Read(selectedFile.getAbsolutePath()));
+        }
     }//GEN-LAST:event_ImportarActionPerformed
 
     private void ExportarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExportarActionPerformed
@@ -247,6 +271,19 @@ public class Principal extends javax.swing.JFrame {
                         JOptionPane.DEFAULT_OPTION
         );
     }//GEN-LAST:event_DocsActionPerformed
+
+    private void NuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NuevoActionPerformed
+        // TODO add your handling code here:
+        
+        this.JTA_Field.setText("");
+        this.JTA_Terminal.setText("");
+        
+    }//GEN-LAST:event_NuevoActionPerformed
+
+    private void CerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CerrarActionPerformed
+        // TODO add your handling code here:
+        exit(0);
+    }//GEN-LAST:event_CerrarActionPerformed
 
     /**
      * @param args the command line arguments
