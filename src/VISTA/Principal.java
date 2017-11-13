@@ -63,7 +63,7 @@ public class Principal extends javax.swing.JFrame {
         About = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Analizador Sintáctico: ");
+        setTitle("Analizador Léxico y Sintáctico");
         setMinimumSize(new java.awt.Dimension(727, 517));
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Terminal"));
