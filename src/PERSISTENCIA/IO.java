@@ -18,7 +18,7 @@ import java.util.ArrayList;
  */
 public class IO {
 
-    public static void Write(String path, ArrayList<String> lines) {
+    public static boolean Write(String path, ArrayList<String> lines) {
         FileWriter fichero = null;
         PrintWriter pw = null;
         try {
@@ -30,7 +30,8 @@ public class IO {
             }
 
         } catch (Exception e) {
-            e.printStackTrace();
+            //e.printStackTrace();
+            return false;
         } finally {
             try {
                 // Nuevamente aprovechamos el finally para 
@@ -42,6 +43,7 @@ public class IO {
                 e2.printStackTrace();
             }
         }
+        return true;
     }
 
     public static String Read(String path) {
