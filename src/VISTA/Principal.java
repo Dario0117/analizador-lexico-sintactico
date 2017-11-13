@@ -7,8 +7,10 @@ package VISTA;
 
 import LOGICA.Analizador;
 import LOGICA.Exportar_PHP;
+import LOGICA.Utilidades.MessageWithLink;
 import java.util.ArrayList;
 import java.util.Arrays;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -160,9 +162,19 @@ public class Principal extends javax.swing.JFrame {
         Ayuda.setText("Ayuda");
 
         Docs.setText("Documentación");
+        Docs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DocsActionPerformed(evt);
+            }
+        });
         Ayuda.add(Docs);
 
         About.setText("Acerca de");
+        About.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AboutActionPerformed(evt);
+            }
+        });
         Ayuda.add(About);
 
         jMenuBar1.add(Ayuda);
@@ -210,6 +222,31 @@ public class Principal extends javax.swing.JFrame {
         this.JTA_Terminal.setText(Analizador.Analizar(lineas).toString());
         
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void AboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AboutActionPerformed
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(this, new MessageWithLink(
+                        "Este software fue creado por:<br>"
+                        + "<b>-Esteban Dario Barboza Primera</b><br>"
+                        + "<b>-Jesús David Barajas Gonzáles</b><br>"
+                        + "En la Universidad de Cartagena"), 
+                        "Créditos", 
+                        JOptionPane.INFORMATION_MESSAGE
+        );
+    }//GEN-LAST:event_AboutActionPerformed
+
+    private void DocsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DocsActionPerformed
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(this, new MessageWithLink(
+                        "<p style='font-size: 15;'>Para la construcción de este software nos basamos en "
+                                + "<a href='https://www.youtube.com/watch?v=ZtIyy1AKgLs'>este video<a>, además,<br>"
+                                + "seguimos la documentación oficial de las librerías "
+                                + "<a href='http://www.jflex.de/manual.html'>JFlex<a> para el análisis léxico<br>"
+                                + "y <a href='http://www2.cs.tum.edu/projects/cup/docs.php'>JCup<a> para el análisis sintáctico.</p>"), 
+                        "Documentación", 
+                        JOptionPane.DEFAULT_OPTION
+        );
+    }//GEN-LAST:event_DocsActionPerformed
 
     /**
      * @param args the command line arguments
