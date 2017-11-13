@@ -5,13 +5,8 @@
  */
 package VISTA;
 
-import LOGICA.Analizadores.Lexico;
-import LOGICA.Analizadores.NodoError;
-import LOGICA.Analizadores.Sintactico;
+import LOGICA.Analizador;
 import LOGICA.Exportar_PHP;
-import PERSISTENCIA.IO;
-import java.io.File;
-import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -209,37 +204,11 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_ExportarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        try {
-            Lexico.Errores.clear();
-            Sintactico.TablaErr.clear();
-            this.JTA_Terminal.setText("");
-            
-            ArrayList<String> lineas = new ArrayList<>();
-            for(String linea : this.JTA_Field.getText().split("\n")){
-                lineas.add(linea);
-            }
-            IO.Write("code.txt", lineas);
-//            IO.Write("code.txt", Arrays.asList(this.JTA_Field.getText().split("\n")));
-            Lexico lexico = new Lexico(new FileReader(new File("code.txt")));
-            Sintactico asin = new Sintactico(lexico);
-            Object x = asin.parse().value;
-            System.out.println(lexico.bandera);
-            System.out.println(asin.bandera);
-        } catch (Exception ex) {
-//            ex.printStackTrace();
-        } finally{
-            this.JTA_Terminal.append("**** RESULTADOS DEL ANÁLISIS ****\n");
-            for(NodoError error: Lexico.Errores){
-                this.JTA_Terminal.append("[Error Lexico] Caracter "+error.getValor()+" incorrecto en la linea "+error.getLinea()+" y columna "+error.getColumna()+"\n");
-            }
-            if(Sintactico.TablaErr.size()>0){
-                this.JTA_Terminal.append("[Error sintáctico] Linea "+(Sintactico.TablaErr.get(0).getLinea())+"\n");
-            }
-            
-            if(Sintactico.TablaErr.size() == 0 && Lexico.Errores.size() == 0){
-                this.JTA_Terminal.append("Congrtulations sabes escribir con reglas xD\n");
-            }
-        }
+        
+        ArrayList<String> lineas = new ArrayList<>();
+        lineas.addAll(Arrays.asList(this.JTA_Field.getText().split("\n")));
+        this.JTA_Terminal.setText(Analizador.Analizar(lineas).toString());
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
