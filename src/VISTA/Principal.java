@@ -144,6 +144,11 @@ public class Principal extends javax.swing.JFrame {
         Archivo.add(Nuevo);
 
         Guardar.setText("Guardar");
+        Guardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                GuardarActionPerformed(evt);
+            }
+        });
         Archivo.add(Guardar);
         Archivo.add(jSeparator1);
 
@@ -284,6 +289,23 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
         exit(0);
     }//GEN-LAST:event_CerrarActionPerformed
+
+    private void GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GuardarActionPerformed
+        // TODO add your handling code here:
+        
+        JFileChooser jfc = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
+        
+        if (jfc.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) {
+            ArrayList<String> lineas = new ArrayList<>();
+            lineas.addAll(Arrays.asList(this.JTA_Field.getText().split("\n")));
+            if(IO.Write(jfc.getSelectedFile().getPath(), lineas)){
+                JOptionPane.showMessageDialog(this, "Archivo guardado con éxito!", "Guardar fichero", JOptionPane.INFORMATION_MESSAGE);
+            }else{
+                JOptionPane.showMessageDialog(this, "No se pudo guardar el archivo", "Guardar fichero", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+        
+    }//GEN-LAST:event_GuardarActionPerformed
 
     /**
      * @param args the command line arguments
