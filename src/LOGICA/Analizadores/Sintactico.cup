@@ -23,7 +23,7 @@ public void syntax_error(Symbol s){
 	System.out.println("\t\tLexema: "+lexema);
 	System.out.println("\t\tFila: "+fila);
 	System.out.println("\t\tColumna: "+columna);
-	NodoError datos = new NodoError(lexema, "ERROR SINTACTICO", fila, columna, "Simbolo no esperado");
+	NodoError datos = new NodoError(lexema, "ERROR SINTACTICO", fila, columna, "Estructura incompleta");
 	TablaErr.add(datos);
 	bandera = 1;
 }
@@ -37,7 +37,7 @@ public void unrecovered_syntax_error(Symbol s) throws java.lang.Exception{
 	System.out.println("\t\tLexema: "+lexema);
 	System.out.println("\t\tFila: "+fila);
 	System.out.println("\t\tColumna: "+columna);
-	NodoError datos = new NodoError(lexema, "ERROR SINTACTICO", fila, columna, "Simbolo no esperado Error Fatal");
+	NodoError datos = new NodoError(lexema, "ERROR SINTACTICO", fila, columna, "Estructura incompleta Error Fatal");
 	TablaErr.add(datos);
 	bandera = 1;
 }
