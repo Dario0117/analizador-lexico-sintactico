@@ -240,6 +240,7 @@ public class Principal extends javax.swing.JFrame {
 
     private void ExportarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExportarActionPerformed
         // TODO add your handling code here:
+        
         php = new Exportar_PHP(this.JTA_Field.getText());
         php.exportar();
     }//GEN-LAST:event_ExportarActionPerformed

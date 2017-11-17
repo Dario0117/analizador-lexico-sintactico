@@ -52,7 +52,7 @@ public class Analizador {
             }
             
             if(Sintactico.TablaErr.isEmpty() && Lexico.Errores.isEmpty()){
-                result.append("Congrtulations sabes escribir con reglas xD\n");
+                result.append("Congratulations no hay errores Léxicos ni Sintácticos\n");
             }
         }
         return result;

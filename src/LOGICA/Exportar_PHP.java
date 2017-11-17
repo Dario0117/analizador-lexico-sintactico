@@ -19,7 +19,6 @@ public class Exportar_PHP {
     
     public void exportar(){
         String[] lines = codigo.split("\n");
-        
         for(String line : lines){
             if(line.trim().equals("")) continue;
             spaces_loop:
@@ -45,7 +44,7 @@ public class Exportar_PHP {
                 line = line.replace("!", "$");
                 String[] partes = line.trim().split("\\|");
                 if(partes.length == 1){
-                    System.out.printf("%s;%n", partes[0]);
+                    System.out.printf("%s=\"\";%n", partes[0]);
                 }else{
                     System.out.printf("%s = %s;%n", partes[0], partes[2]);
                 }
